@@ -1,10 +1,11 @@
 {
-  "name":"senas-a-voz-lsa","version":"1.0.1","private":true,
+  "name":"senas-a-voz-lsa","version":"1.0.2","private":true,
   "scripts":{"build":"vite build"},
   "dependencies":{
     "@capacitor/android":"^7.4.3",
     "@capacitor/core":"^7.4.3",
-    "@capacitor-community/camera-preview":"7.0.5"
+    "@capacitor-community/camera-preview":"7.0.5",
+    "@mediapipe/tasks-vision":"^0.10.22"
   },
   "devDependencies":{"@capacitor/cli":"^7.4.3","vite":"^6.4.1","typescript":"^5.8.3"}
 }

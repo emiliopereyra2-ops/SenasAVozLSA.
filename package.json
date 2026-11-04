@@ -2,5 +2,5 @@
 "name":"senas-a-voz-lsa","version":"1.0.0","private":true,
 "scripts":{"build":"vite build"},
 "dependencies":{"@capacitor/android":"^7.4.3","@capacitor/core":"^7.4.3"},
-"devDependencies":{"@capacitor/cli":"^7.4.3","vite":"^6.4.1"}
+"devDependencies":{"@capacitor/cli":"^7.4.3","vite":"^6.4.1","typescript":"^5.8.3"}
 }

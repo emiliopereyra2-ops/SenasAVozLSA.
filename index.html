@@ -1,17 +1,13 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta name="theme-color" content="#075985"><title>Señas a Voz LSA</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,Arial;background:#f1f5f9;color:#0f172a}header{background:#075985;color:white;padding:18px;text-align:center}main{padding:14px;max-width:700px;margin:auto}.card{background:white;border-radius:14px;padding:15px;margin:12px 0;box-shadow:0 2px 8px #0001}button{background:#075985;color:white;border:0;border-radius:10px;padding:12px 14px;font-size:16px;margin:5px;cursor:pointer}button.alt{background:#0e7490}textarea,input{width:100%;font-size:18px;padding:12px;border:1px solid #cbd5e1;border-radius:10px}video{width:100%;background:#111;border-radius:10px;max-height:360px}.big{font-size:28px;font-weight:700;text-align:center;min-height:65px;padding:12px;overflow-wrap:anywhere}.small{color:#475569;font-size:14px}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:system-ui,Arial;background:transparent!important;color:#0f172a}
+header{background:#075985;color:white;padding:12px;text-align:center}main{padding:10px;max-width:700px;margin:auto}.card{background:rgba(255,255,255,.92);border-radius:14px;padding:13px;margin:10px 0;box-shadow:0 2px 8px #0002}
+button{background:#075985;color:white;border:0;border-radius:10px;padding:12px;font-size:16px;margin:4px;cursor:pointer}button.alt{background:#0e7490}textarea{width:100%;font-size:18px;padding:12px;border:1px solid #cbd5e1;border-radius:10px}
+#cameraStatus{font-weight:600}.big{font-size:28px;font-weight:700;text-align:center;min-height:65px;padding:12px;overflow-wrap:anywhere}.small{color:#475569;font-size:14px}
 </style></head><body><header><h1>Señas a Voz LSA</h1><p>Comunicación accesible</p></header><main>
-<div class="card"><h2>📷 Cámara</h2><video id="video" autoplay playsinline muted></video><button id="cam">Activar cámara</button><button id="stop" class="alt">Detener cámara</button><p class="small">La cámara muestra la imagen en vivo. El reconocimiento automático de LSA todavía no está incorporado.</p></div>
-<div class="card"><h2>✍️ Escribir y hablar</h2><textarea id="txt" rows="3" placeholder="Escribí lo que querés comunicar..."></textarea><button id="show">Mostrar texto grande</button><button id="speak">🔊 Leer en voz alta</button><div id="large" class="big" aria-live="polite"></div></div>
+<div class="card"><h2>📷 Cámara frontal</h2><p id="cameraStatus">Cámara apagada</p><button id="cam">Iniciar cámara</button><button id="stop" class="alt">Detener</button><button id="flip" class="alt">Cambiar cámara</button><p class="small">Vista de cámara nativa. El reconocimiento automático de LSA todavía no está implementado.</p></div>
+<div class="card"><h2>✍️ Texto a voz</h2><textarea id="txt" rows="3" placeholder="Escribí el mensaje..."></textarea><button id="show">Mostrar texto</button><button id="speak">🔊 Hablar</button><div id="large" class="big" aria-live="polite"></div></div>
 <div class="card"><h2>Frases rápidas</h2><div id="phrases"></div></div>
-<div class="card"><h2>📖 Alfabeto manual LSA</h2><p class="small">Material orientativo. Las señas deben verificarse con hablantes/docentes de LSA. Esta versión no detecta ni traduce señas automáticamente.</p><p><b>Hola · Gracias · Por favor · Necesito ayuda · Sí · No · ¿Cómo estás?</b></p></div>
-</main><script>
-const v=document.getElementById('video'), t=document.getElementById('txt'), large=document.getElementById('large');let stream;
-document.getElementById('cam').onclick=async()=>{try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user'},audio:false});v.srcObject=stream}catch(e){alert('No se pudo abrir la cámara. Revisá los permisos de Android. '+e.message)}};
-document.getElementById('stop').onclick=()=>{stream?.getTracks().forEach(x=>x.stop());v.srcObject=null};
-document.getElementById('show').onclick=()=>large.textContent=t.value;
-document.getElementById('speak').onclick=()=>{if(!t.value.trim())return;let u=new SpeechSynthesisUtterance(t.value);u.lang='es-AR';speechSynthesis.cancel();speechSynthesis.speak(u)};
-['Hola','Gracias','Por favor','Necesito ayuda','Sí','No','¿Cómo estás?','No entiendo'].forEach(p=>{let b=document.createElement('button');b.className='alt';b.textContent=p;b.onclick=()=>{t.value=p;large.textContent=p};document.getElementById('phrases').append(b)});
-</script></body></html>
+<div class="card"><h2>Texto ↔ LSA</h2><p class="small">Los videos/animaciones validados de LSA todavía no están integrados. La cámara aún no traduce señas a texto; esto requiere un modelo IA específico de LSA.</p></div>
+</main><script type="module" src="/src/main.js"></script></body></html>
